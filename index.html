@@ -1,0 +1,2767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Building Facilities Maintenance Services - Reliable, Efficient, and Professional Facility Management Solutions">
+    <meta name="keywords" content="facilities maintenance, building maintenance, professional services">
+    <meta property="og:title" content="Professional Building Facilities Maintenance Services">
+    <meta property="og:description" content="Reliable • Efficient • Professional Facility Management Solutions">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>ProFacilities - Professional Building Maintenance Services</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           CSS VARIABLES & ROOT
+           ========================================== */
+        :root {
+            --primary: #0f172a;
+            --secondary: #06b6d4;
+            --accent: #f97316;
+            --dark: #1B1B1B;
+            --bg: #f8fafc;
+            --text: #444;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ==========================================
+           GENERAL STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================
+           PRELOADER
+           ========================================== */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease-in-out 2s forwards;
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e0e0e0;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .language-toggle {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            margin-top: 0.5rem;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .language-option:hover {
+            background: var(--bg);
+            color: var(--secondary);
+            padding-left: 1.5rem;
+        }
+
+        .language-option.active {
+            color: var(--secondary);
+            background: var(--bg);
+        }
+
+        .language-option:first-child {
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .language-option:last-child {
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 174, 239, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 180, 0, 0.1);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(30px) translateX(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeUpIn 1s ease-out;
+        }
+
+        @keyframes fadeUpIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .typing-effect {
+            color: var(--secondary);
+            min-height: 3.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 180, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ==========================================
+           SECTIONS
+           ========================================== */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* ==========================================
+           ABOUT SECTION
+           ========================================== */
+        #about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content > div:last-child {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-content img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            min-height: 300px;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .value-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           SERVICES SECTION
+           ========================================== */
+        #services {
+            background: var(--bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .service-card:hover i {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           WHY CHOOSE US
+           ========================================== */
+        #why-choose {
+            background: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            animation: slideInUp 0.6s ease-out;
+            border-top: 4px solid transparent;
+            transition: var(--transition);
+        }
+
+        @keyframes slideInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .why-card:hover {
+            border-top-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .why-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .why-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==========================================
+           PROCESS SECTION
+           ========================================== */
+        #process {
+            background: var(--bg);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-top: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-item h4 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            text-align: center;
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           PROJECTS SECTION
+           ========================================== */
+        #projects {
+            background: var(--white);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 61, 145, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--white);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ==========================================
+           TESTIMONIALS SECTION
+           ========================================== */
+        #testimonials {
+            background: var(--bg);
+        }
+
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .testimonial-card .stars {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        /* ==========================================
+           FAQ SECTION
+           ========================================== */
+        #faq {
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .faq-question:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            background: var(--white);
+            border: 1px solid var(--bg);
+            border-top: none;
+            padding: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        /* ==========================================
+           CONTACT SECTION
+           ========================================== */
+        #contact {
+            background: var(--bg);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-item p {
+            color: var(--text);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* ==========================================
+           BACK TO TOP BUTTON
+           ========================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #ffc933;
+            transform: translateY(-5px);
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--white);
+                gap: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--bg);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content > div:last-child {
+                gap: 1.5rem;
+            }
+
+            .about-content img {
+                width: 100%;
+                height: 250px;
+                min-height: unset;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-items {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                padding-left: 2rem;
+            }
+
+            .timeline-item::before {
+                left: 0;
+                transform: translateX(-50%);
+            }
+
+            .testimonial-slider {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-content a {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <p>ProFacilities</p>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-building"></i> <span data-lang="en" data-text="ProFacilities">ProFacilities</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link" data-lang="en" data-text="Home">Home</a></li>
+            <li><a href="#about" class="nav-link" data-lang="en" data-text="About Us">About Us</a></li>
+            <li><a href="#services" class="nav-link" data-lang="en" data-text="Services">Services</a></li>
+            <li><a href="#why-choose" class="nav-link" data-lang="en" data-text="Why Choose Us">Why Choose Us</a></li>
+            <li><a href="#projects" class="nav-link" data-lang="en" data-text="Projects">Projects</a></li>
+            <li><a href="#testimonials" class="nav-link" data-lang="en" data-text="Testimonials">Testimonials</a></li>
+            <li><a href="#faq" class="nav-link" data-lang="en" data-text="FAQ">FAQ</a></li>
+            <li><a href="#contact" class="nav-link" data-lang="en" data-text="Contact">Contact</a></li>
+        </ul>
+        <div class="language-selector">
+            <button class="language-toggle" id="languageToggle">
+                <i class="fas fa-globe"></i>
+                <span id="currentLang">EN</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                <button class="language-option active" data-lang="en">English</button>
+                <button class="language-option" data-lang="ms">Bahasa Melayu</button>
+                <button class="language-option" data-lang="ta">தமிழ்</button>
+                <button class="language-option" data-lang="zh">中文</button>
+            </div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Professional Building Facilities <span class="typing-effect">Maintenance Services</span></h1>
+            <p>Reliable • Efficient • Professional Facility Management Solutions</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Request a Quote</button>
+                <button class="btn btn-secondary">Our Services</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>We are dedicated to providing exceptional building facilities maintenance services that exceed our clients' expectations. With over two decades of experience, we've become a trusted partner for businesses across the region.</p>
+                    
+                    <h3 style="margin-top: 2rem;">Our Vision</h3>
+                    <p>To be the leading provider of innovative, sustainable, and cost-effective facilities management solutions that enhance the value and longevity of our clients' properties.</p>
+
+                    <div class="values">
+                        <div class="value-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--accent);"></i> Integrity</h4>
+                            <p>Honest and transparent in all dealings</p>
+                        </div>
+                        <div class="value-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--accent);"></i> Excellence</h4>
+                            <p>Highest standards in every project</p>
+                        </div>
+                        <div class="value-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--accent);"></i> Innovation</h4>
+                            <p>Cutting-edge solutions and technology</p>
+                        </div>
+                        <div class="value-card">
+                            <h4><i class="fas fa-check-circle" style="color: var(--accent);"></i> Reliability</h4>
+                            <p>Consistent and dependable service</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=600&fit=crop" alt="Professional team working" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lg);">
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number" data-target="500">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="25">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="300">0</div>
+                            <div class="stat-label">Satisfied Clients</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">Expert Staff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive facility maintenance solutions tailored to your needs</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Building Maintenance</h3>
+                    <p>Regular maintenance and repairs to keep your building in optimal condition</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-plug"></i>
+                    <h3>Electrical Maintenance</h3>
+                    <p>Expert electrical services and safety inspections</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Mechanical Maintenance</h3>
+                    <p>Professional mechanical system repairs and upgrades</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-fan"></i>
+                    <h3>HVAC Services</h3>
+                    <p>Climate control installation, repair, and maintenance</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-droplet"></i>
+                    <h3>Plumbing</h3>
+                    <p>Complete plumbing solutions and water system management</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-broom"></i>
+                    <h3>Cleaning Services</h3>
+                    <p>Professional cleaning and janitorial services</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Painting</h3>
+                    <p>Interior and exterior painting services</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hammer"></i>
+                    <h3>Civil Repairs</h3>
+                    <p>Structural repairs and civil construction work</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Roof Maintenance</h3>
+                    <p>Roof inspection, repair, and waterproofing services</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section id="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">What sets us apart from the competition</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for emergency maintenance</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Professionals</h3>
+                    <p>Highly trained and certified technicians</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Response</h3>
+                    <p>Quick response times to minimize downtime</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-tag"></i>
+                    <h3>Affordable Pricing</h3>
+                    <p>Competitive rates without compromising quality</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous quality checks on all completed work</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safety First</h3>
+                    <p>Strict adherence to safety protocols and standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-subtitle">Simple, transparent, and efficient service delivery</p>
+            <div class="timeline">
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <h4>Step 1</h4>
+                        <p>Inspection</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Step 2</h4>
+                        <p>Quotation</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Step 3</h4>
+                        <p>Execution</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Step 4</h4>
+                        <p>Quality Check</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Step 5</h4>
+                        <p>Completion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <p class="section-subtitle">View our recent facilities maintenance work</p>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1486421698619-2c3f2ab0aeb9?w=400&h=300&fit=crop" alt="Modern office building">
+                    <div class="project-overlay">
+                        <h3>Office Complex Maintenance</h3>
+                        <p>Commercial</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9264f475eabf?w=400&h=300&fit=crop" alt="Modern residential building">
+                    <div class="project-overlay">
+                        <h3>Residential Building Care</h3>
+                        <p>Residential</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="industrial">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Industrial facility">
+                    <div class="project-overlay">
+                        <h3>Industrial Facility Maintenance</h3>
+                        <p>Industrial</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop" alt="Shopping mall">
+                    <div class="project-overlay">
+                        <h3>Shopping Center Services</h3>
+                        <p>Commercial</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=300&fit=crop" alt="Apartment complex">
+                    <div class="project-overlay">
+                        <h3>Apartment Complex Restoration</h3>
+                        <p>Residential</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="industrial">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Warehouse">
+                    <div class="project-overlay">
+                        <h3>Warehouse Maintenance</h3>
+                        <p>Industrial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <p class="section-subtitle">What our clients say about our services</p>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"ProFacilities transformed our maintenance operations. Their team is professional, efficient, and always responsive to our needs."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop" alt="Client avatar" class="author-avatar">
+                        <div class="author-info">
+                            <h4>John Anderson</h4>
+                            <p>TechCorp Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Exceptional service! The team handled all our facility maintenance with precision and professionalism. Highly recommended."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop" alt="Client avatar" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Global Retail Group</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best facilities management partner we've had. Their attention to detail and commitment to excellence is unmatched."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop" alt="Client avatar" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Premier Industrial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our services</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What services do you offer?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer comprehensive building facilities maintenance services including electrical, mechanical, HVAC, plumbing, cleaning, painting, civil repairs, roof maintenance, and emergency maintenance. All services are delivered by certified professionals.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer 24/7 emergency services?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide round-the-clock emergency maintenance services. Our dedicated team is available 24/7 to handle any urgent facility maintenance needs to minimize downtime.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How quickly can you respond to maintenance requests?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our average response time is within 2 hours for emergency requests and 24 hours for scheduled maintenance. We prioritize rapid response to minimize disruption to your operations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are your technicians certified and insured?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our technicians are fully certified, licensed, and insured. We maintain strict quality standards and safety protocols to ensure the highest level of service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can you work within our budget constraints?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We offer flexible pricing options and can customize service packages to fit your budget. We'll provide detailed quotations with no hidden charges.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide maintenance contracts?</span>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive preventive maintenance contracts tailored to your facility's specific needs. These contracts help extend equipment life and reduce overall maintenance costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch with our team today</p>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p><strong>Phone</strong></p>
+                            <p>+60 3-1234-5678</p>
+                            <p>+60 12-3456-7890</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><strong>Email</strong></p>
+                            <p>info@profacilities.com</p>
+                            <p>support@profacilities.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p><strong>Office Address</strong></p>
+                            <p>123 Maintenance Plaza<br>Kuala Lumpur, 50000<br>Malaysia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p><strong>Working Hours</strong></p>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday & Holidays: Closed</p>
+                            <p style="margin-top: 0.5rem; color: var(--accent);">24/7 Emergency Services Available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="building-maintenance">Building Maintenance</option>
+                            <option value="electrical">Electrical Maintenance</option>
+                            <option value="mechanical">Mechanical Maintenance</option>
+                            <option value="hvac">HVAC Services</option>
+                            <option value="plumbing">Plumbing</option>
+                            <option value="cleaning">Cleaning Services</option>
+                            <option value="painting">Painting</option>
+                            <option value="civil">Civil Repairs</option>
+                            <option value="roof">Roof Maintenance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-building"></i> ProFacilities</h3>
+                <p>Professional Building Facilities Maintenance Services committed to excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Building Maintenance</a></li>
+                    <li><a href="#services">Electrical Services</a></li>
+                    <li><a href="#services">HVAC Solutions</a></li>
+                    <li><a href="#services">Emergency Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ProFacilities. All rights reserved. | <a href="#" style="color: var(--white); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--white); text-decoration: none;">Terms & Conditions</a></p>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // ========================================
+        // TRANSLATION DATA
+        // ========================================
+        const translations = {
+            en: {
+                'ProFacilities': 'ProFacilities',
+                'Home': 'Home',
+                'About Us': 'About Us',
+                'Services': 'Services',
+                'Why Choose Us': 'Why Choose Us',
+                'Projects': 'Projects',
+                'Testimonials': 'Testimonials',
+                'FAQ': 'FAQ',
+                'Contact': 'Contact',
+                'Professional Building Facilities Maintenance Services': 'Professional Building Facilities Maintenance Services',
+                'Reliable • Efficient • Professional Facility Management Solutions': 'Reliable • Efficient • Professional Facility Management Solutions',
+                'Request a Quote': 'Request a Quote',
+                'Our Services': 'Our Services',
+                'Our Mission': 'Our Mission',
+                'Our Vision': 'Our Vision',
+                'Integrity': 'Integrity',
+                'Honest and transparent in all dealings': 'Honest and transparent in all dealings',
+                'Excellence': 'Excellence',
+                'Highest standards in every project': 'Highest standards in every project',
+                'Innovation': 'Innovation',
+                'Cutting-edge solutions and technology': 'Cutting-edge solutions and technology',
+                'Reliability': 'Reliability',
+                'Consistent and dependable service': 'Consistent and dependable service',
+                'Projects Completed': 'Projects Completed',
+                'Years Experience': 'Years Experience',
+                'Satisfied Clients': 'Satisfied Clients',
+                'Expert Staff': 'Expert Staff',
+                'Comprehensive facility maintenance solutions tailored to your needs': 'Comprehensive facility maintenance solutions tailored to your needs',
+                'Building Maintenance': 'Building Maintenance',
+                'Regular maintenance and repairs to keep your building in optimal condition': 'Regular maintenance and repairs to keep your building in optimal condition',
+                'Learn More': 'Learn More',
+                'Electrical Maintenance': 'Electrical Maintenance',
+                'Expert electrical services and safety inspections': 'Expert electrical services and safety inspections',
+                'Mechanical Maintenance': 'Mechanical Maintenance',
+                'Professional mechanical system repairs and upgrades': 'Professional mechanical system repairs and upgrades',
+                'HVAC Services': 'HVAC Services',
+                'Climate control installation, repair, and maintenance': 'Climate control installation, repair, and maintenance',
+                'Plumbing': 'Plumbing',
+                'Complete plumbing solutions and water system management': 'Complete plumbing solutions and water system management',
+                'Cleaning Services': 'Cleaning Services',
+                'Professional cleaning and janitorial services': 'Professional cleaning and janitorial services',
+                'Painting': 'Painting',
+                'Interior and exterior painting services': 'Interior and exterior painting services',
+                'Civil Repairs': 'Civil Repairs',
+                'Structural repairs and civil construction work': 'Structural repairs and civil construction work',
+                'Roof Maintenance': 'Roof Maintenance',
+                'Roof inspection, repair, and waterproofing services': 'Roof inspection, repair, and waterproofing services',
+                'What sets us apart from the competition': 'What sets us apart from the competition',
+                '24/7 Support': '24/7 Support',
+                'Round-the-clock customer support for emergency maintenance': 'Round-the-clock customer support for emergency maintenance',
+                'Certified Professionals': 'Certified Professionals',
+                'Highly trained and certified technicians': 'Highly trained and certified technicians',
+                'Fast Response': 'Fast Response',
+                'Quick response times to minimize downtime': 'Quick response times to minimize downtime',
+                'Affordable Pricing': 'Affordable Pricing',
+                'Competitive rates without compromising quality': 'Competitive rates without compromising quality',
+                'Quality Assurance': 'Quality Assurance',
+                'Rigorous quality checks on all completed work': 'Rigorous quality checks on all completed work',
+                'Safety First': 'Safety First',
+                'Strict adherence to safety protocols and standards': 'Strict adherence to safety protocols and standards',
+                'Simple, transparent, and efficient service delivery': 'Simple, transparent, and efficient service delivery',
+                'Step 1': 'Step 1',
+                'Inspection': 'Inspection',
+                'Step 2': 'Step 2',
+                'Quotation': 'Quotation',
+                'Step 3': 'Step 3',
+                'Execution': 'Execution',
+                'Step 4': 'Step 4',
+                'Quality Check': 'Quality Check',
+                'Step 5': 'Step 5',
+                'Completion': 'Completion',
+                'View our recent facilities maintenance work': 'View our recent facilities maintenance work',
+                'All': 'All',
+                'Commercial': 'Commercial',
+                'Residential': 'Residential',
+                'Industrial': 'Industrial',
+                'Office Complex Maintenance': 'Office Complex Maintenance',
+                'Residential Building Care': 'Residential Building Care',
+                'Industrial Facility Maintenance': 'Industrial Facility Maintenance',
+                'Shopping Center Services': 'Shopping Center Services',
+                'Apartment Complex Restoration': 'Apartment Complex Restoration',
+                'Warehouse Maintenance': 'Warehouse Maintenance',
+                'What our clients say about our services': 'What our clients say about our services',
+                'Find answers to common questions about our services': 'Find answers to common questions about our services',
+                'What services do you offer?': 'What services do you offer?',
+                'Do you offer 24/7 emergency services?': 'Do you offer 24/7 emergency services?',
+                'How quickly can you respond to maintenance requests?': 'How quickly can you respond to maintenance requests?',
+                'Are your technicians certified and insured?': 'Are your technicians certified and insured?',
+                'Can you work within our budget constraints?': 'Can you work within our budget constraints?',
+                'Do you provide maintenance contracts?': 'Do you provide maintenance contracts?',
+                'Get in touch with our team today': 'Get in touch with our team today',
+                'Contact Information': 'Contact Information',
+                'Phone': 'Phone',
+                'Email': 'Email',
+                'Office Address': 'Office Address',
+                'Working Hours': 'Working Hours',
+                'Full Name': 'Full Name',
+                'Company': 'Company',
+                'Service Required': 'Service Required',
+                'Message': 'Message',
+                'Send Message': 'Send Message',
+                'Quick Links': 'Quick Links',
+                'Follow Us': 'Follow Us',
+            },
+            ms: {
+                'ProFacilities': 'ProFacilities',
+                'Home': 'Rumah',
+                'About Us': 'Tentang Kami',
+                'Services': 'Perkhidmatan',
+                'Why Choose Us': 'Mengapa Pilih Kami',
+                'Projects': 'Projek',
+                'Testimonials': 'Testimoni',
+                'FAQ': 'Soalan Lazim',
+                'Contact': 'Hubungi',
+                'Professional Building Facilities Maintenance Services': 'Perkhidmatan Penyelenggaraan Kemudahan Bangunan Profesional',
+                'Reliable • Efficient • Professional Facility Management Solutions': 'Boleh Dipercayai • Cekap • Solusi Pengurusan Kemudahan Profesional',
+                'Request a Quote': 'Minta Sebutan Harga',
+                'Our Services': 'Perkhidmatan Kami',
+                'Our Mission': 'Misi Kami',
+                'Our Vision': 'Visi Kami',
+                'Integrity': 'Integriti',
+                'Honest and transparent in all dealings': 'Jujur dan telus dalam semua urus niaga',
+                'Excellence': 'Keunggulan',
+                'Highest standards in every project': 'Piawaian tertinggi dalam setiap projek',
+                'Innovation': 'Inovasi',
+                'Cutting-edge solutions and technology': 'Solusi dan teknologi terkini',
+                'Reliability': 'Kebolehpercayaan',
+                'Consistent and dependable service': 'Perkhidmatan yang konsisten dan boleh dipercayai',
+                'Projects Completed': 'Projek Diselesaikan',
+                'Years Experience': 'Tahun Pengalaman',
+                'Satisfied Clients': 'Klien Berpuas hati',
+                'Expert Staff': 'Kakitangan Pakar',
+                'Comprehensive facility maintenance solutions tailored to your needs': 'Solusi penyelenggaraan kemudahan komprehensif yang disesuaikan dengan keperluan anda',
+                'Building Maintenance': 'Penyelenggaraan Bangunan',
+                'Regular maintenance and repairs to keep your building in optimal condition': 'Penyelenggaraan dan pembaikan berkala untuk memastikan bangunan anda dalam keadaan optimum',
+                'Learn More': 'Ketahui Lebih Lanjut',
+                'Electrical Maintenance': 'Penyelenggaraan Elektrik',
+                'Expert electrical services and safety inspections': 'Perkhidmatan elektrik pakar dan pemeriksaan keselamatan',
+                'Mechanical Maintenance': 'Penyelenggaraan Mekanikal',
+                'Professional mechanical system repairs and upgrades': 'Pembaikan dan peningkatan sistem mekanikal profesional',
+                'HVAC Services': 'Perkhidmatan HVAC',
+                'Climate control installation, repair, and maintenance': 'Pemasangan, pembaikan, dan penyelenggaraan kawalan iklim',
+                'Plumbing': 'Paip',
+                'Complete plumbing solutions and water system management': 'Solusi paip lengkap dan pengurusan sistem air',
+                'Cleaning Services': 'Perkhidmatan Pembersihan',
+                'Professional cleaning and janitorial services': 'Perkhidmatan pembersihan dan janitor profesional',
+                'Painting': 'Pengecatan',
+                'Interior and exterior painting services': 'Perkhidmatan pengecatan dalaman dan luaran',
+                'Civil Repairs': 'Pembaikan Awam',
+                'Structural repairs and civil construction work': 'Pembaikan struktur dan kerja pembinaan awam',
+                'Roof Maintenance': 'Penyelenggaraan Bumbung',
+                'Roof inspection, repair, and waterproofing services': 'Pemeriksaan bumbung, pembaikan, dan perkhidmatan ketidaktelapan air',
+                'What sets us apart from the competition': 'Apa yang membezakan kami dari persaingan',
+                '24/7 Support': 'Sokongan 24/7',
+                'Round-the-clock customer support for emergency maintenance': 'Sokongan pelanggan sepanjang masa untuk penyelenggaraan kecemasan',
+                'Certified Professionals': 'Profesional Bersijil',
+                'Highly trained and certified technicians': 'Teknisi terlatih dan bersijil dengan baik',
+                'Fast Response': 'Respons Cepat',
+                'Quick response times to minimize downtime': 'Masa respons cepat untuk meminimalkan masa henti',
+                'Affordable Pricing': 'Harga Mampu Milik',
+                'Competitive rates without compromising quality': 'Kadar berdaya saing tanpa mengorbankan kualiti',
+                'Quality Assurance': 'Jaminan Kualiti',
+                'Rigorous quality checks on all completed work': 'Pemeriksaan kualiti yang ketat pada semua kerja yang diselesaikan',
+                'Safety First': 'Keselamatan Dahulu',
+                'Strict adherence to safety protocols and standards': 'Pematuhan ketat kepada protokol dan piawaian keselamatan',
+                'Simple, transparent, and efficient service delivery': 'Penyampaian perkhidmatan yang mudah, telus, dan cekap',
+                'Step 1': 'Langkah 1',
+                'Inspection': 'Pemeriksaan',
+                'Step 2': 'Langkah 2',
+                'Quotation': 'Sebutan Harga',
+                'Step 3': 'Langkah 3',
+                'Execution': 'Pelaksanaan',
+                'Step 4': 'Langkah 4',
+                'Quality Check': 'Pemeriksaan Kualiti',
+                'Step 5': 'Langkah 5',
+                'Completion': 'Siap',
+                'View our recent facilities maintenance work': 'Lihat kerja penyelenggaraan kemudahan terbaru kami',
+                'All': 'Semua',
+                'Commercial': 'Komersial',
+                'Residential': 'Kediaman',
+                'Industrial': 'Industri',
+                'Office Complex Maintenance': 'Penyelenggaraan Kompleks Pejabat',
+                'Residential Building Care': 'Penjagaan Bangunan Kediaman',
+                'Industrial Facility Maintenance': 'Penyelenggaraan Kemudahan Industri',
+                'Shopping Center Services': 'Perkhidmatan Pusat Membeli-belah',
+                'Apartment Complex Restoration': 'Pemulihan Kompleks Apartmen',
+                'Warehouse Maintenance': 'Penyelenggaraan Gudang',
+                'What our clients say about our services': 'Apa yang klien kami katakan tentang perkhidmatan kami',
+                'Find answers to common questions about our services': 'Cari jawapan kepada pertanyaan biasa tentang perkhidmatan kami',
+                'What services do you offer?': 'Apakah perkhidmatan yang anda tawarkan?',
+                'Do you offer 24/7 emergency services?': 'Adakah anda menawarkan perkhidmatan kecemasan 24/7?',
+                'How quickly can you respond to maintenance requests?': 'Seberapa cepat anda dapat bertindak balas terhadap permintaan penyelenggaraan?',
+                'Are your technicians certified and insured?': 'Adakah teknisi anda bersijil dan diinsuranskan?',
+                'Can you work within our budget constraints?': 'Bolehkah anda bekerja dalam kekangan bajet kami?',
+                'Do you provide maintenance contracts?': 'Adakah anda menyediakan kontrak penyelenggaraan?',
+                'Get in touch with our team today': 'Hubungi pasukan kami hari ini',
+                'Contact Information': 'Maklumat Hubungan',
+                'Phone': 'Telefon',
+                'Email': 'E-mel',
+                'Office Address': 'Alamat Pejabat',
+                'Working Hours': 'Jam Bekerja',
+                'Full Name': 'Nama Penuh',
+                'Company': 'Syarikat',
+                'Service Required': 'Perkhidmatan Diperlukan',
+                'Message': 'Pesanan',
+                'Send Message': 'Hantar Pesanan',
+                'Quick Links': 'Pautan Cepat',
+                'Follow Us': 'Ikuti Kami',
+            },
+            ta: {
+                'ProFacilities': 'ProFacilities',
+                'Home': 'வீடு',
+                'About Us': 'எங்களைப் பற்றி',
+                'Services': 'சேவைகள்',
+                'Why Choose Us': 'ஏன் எங்களைத் தேர்வு செய்ய வேண்டும்',
+                'Projects': 'திட்டங்கள்',
+                'Testimonials': 'சாட்சியங்கள்',
+                'FAQ': 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
+                'Contact': 'தொடர்பு',
+                'Professional Building Facilities Maintenance Services': 'தொழிலாய விளையாட்டு கட்டிடம் வசதி பணிப்பெயர்ச்சி சேவைகள்',
+                'Reliable • Efficient • Professional Facility Management Solutions': 'நம்பகமான • திறமையான • தொழிலாய வசதி ব்যবস்थापन தீர்வுகள்',
+                'Request a Quote': 'மேற்கோளுக்கு கோரிக்கை',
+                'Our Services': 'எங்கள் சேவைகள்',
+                'Our Mission': 'எங்கள் பணி',
+                'Our Vision': 'எங்கள் பார்வை',
+                'Integrity': 'সততা',
+                'Honest and transparent in all dealings': 'அனைத்து நடவடிக்கைகளில் நேர்மையான மற்றும் வெளிப்படையான',
+                'Excellence': 'சிறத்தம்',
+                'Highest standards in every project': 'ஒவ்வொரு திட்டத்திலும் மிக உயர்ந்த தரம்',
+                'Innovation': 'கண்டுபிடிப்பு',
+                'Cutting-edge solutions and technology': 'অত்যাধুनிক সমাধান এবং প্রযুক্তি',
+                'Reliability': 'நம்பகத்தன்மை',
+                'Consistent and dependable service': 'ধারাবাहिक এবং विश्वाsनीય সেবা',
+                'Projects Completed': 'সম்পন्ন প্রকল্পগুলি',
+                'Years Experience': 'বছর অভিজ্ঞতা',
+                'Satisfied Clients': 'সন্তুষ্ট ক্লায়েন্ট',
+                'Expert Staff': 'বিশেষজ্ঞ কর্মী',
+                'Comprehensive facility maintenance solutions tailored to your needs': 'আপনার প্রয়োজন অনুযায়ী ব্যাপক সুবিধা রক্ষণাবেক্ষণ সমাধান',
+                'Building Maintenance': 'বিল্ডিং রক্ষণাবেক্ষণ',
+                'Regular maintenance and repairs to keep your building in optimal condition': 'আপনার বিল্ডিংকে সর্বোত্তম অবস্থায় রাখতে নিয়মিত রক্ষণাবেক্ষণ এবং মেরামত',
+                'Learn More': 'আরও জানুন',
+                'Electrical Maintenance': 'বৈদ্যুতিক রক্ষণাবেক্ষণ',
+                'Expert electrical services and safety inspections': 'বিশেষজ্ঞ বৈদ্যুতিক পরিষেবা এবং নিরাপত্তা পরিদর্শন',
+                'Mechanical Maintenance': 'যান্ত্রিক রক্ষণাবেক্ষণ',
+                'Professional mechanical system repairs and upgrades': 'পেশাদার যান্ত্রিক সিস্টেম মেরামত এবং আপগ্রেড',
+                'HVAC Services': 'HVAC পরিষেবা',
+                'Climate control installation, repair, and maintenance': 'জলবায়ু নিয়ন্ত্রণ ইনস্টলেশন, মেরামত এবং রক্ষণাবেক্ষণ',
+                'Plumbing': 'নদী',
+                'Complete plumbing solutions and water system management': 'সম্পূর্ণ প্লাম্বিং সমাধান এবং জল ব্যবস্থাপনা',
+                'Cleaning Services': 'পরিষ্কার পরিষেবা',
+                'Professional cleaning and janitorial services': 'পেশাদার পরিষ্কার এবং জেনিটোরিয়াল পরিষেবা',
+                'Painting': 'রঙ করা',
+                'Interior and exterior painting services': 'অভ্যন্তরীণ এবং বাহ্যিক পেইন্টিং পরিষেবা',
+                'Civil Repairs': 'নাগরিক মেরামত',
+                'Structural repairs and civil construction work': 'কাঠামোগত মেরামত এবং সিভিল নির্মাণ কাজ',
+                'Roof Maintenance': 'ছাদ রক্ষণাবেক্ষণ',
+                'Roof inspection, repair, and waterproofing services': 'ছাদ পরিদর্শন, মেরামত এবং জলরোধী পরিষেবা',
+                'What sets us apart from the competition': 'প্রতিযোগিতা থেকে আমাদের আলাদা করে তোলে',
+                '24/7 Support': '24/7 সাপোর্ট',
+                'Round-the-clock customer support for emergency maintenance': 'জরুরি রক্ষণাবেক্ষণের জন্য সর্বক্ষণ গ্রাহক সহায়তা',
+                'Certified Professionals': 'প্রত্যয়িত পেশাদার',
+                'Highly trained and certified technicians': 'উচ্চ প্রশিক্ষিত এবং প্রত্যয়িত প্রযুক্তিবিদ',
+                'Fast Response': 'দ্রুত প্রতিক্রিয়া',
+                'Quick response times to minimize downtime': 'ডাউনটাইম কমাতে দ্রুত প্রতিক্রিয়া সময়',
+                'Affordable Pricing': 'সাশ্রয়ী মূল্য নির্ধারণ',
+                'Competitive rates without compromising quality': 'গুণমান ত্যাগ না করে প্রতিযোগিতামূলক হার',
+                'Quality Assurance': 'গুণমান নিশ্চয়তা',
+                'Rigorous quality checks on all completed work': 'সমস্ত সম্পন্ন কাজে কঠোর গুণমান পরীক্ষা',
+                'Safety First': 'প্রথমে নিরাপত্তা',
+                'Strict adherence to safety protocols and standards': 'নিরাপত্তা প্রোটোকল এবং মান কঠোর মেনে চলা',
+                'Simple, transparent, and efficient service delivery': 'সহজ, স্বচ্ছ এবং দক্ষ সেবা প্রদান',
+                'Step 1': 'পদক্ষেপ 1',
+                'Inspection': 'পরিদর্শন',
+                'Step 2': 'পদক্ষেপ 2',
+                'Quotation': 'উদ্ধৃতি',
+                'Step 3': 'পদক্ষেপ 3',
+                'Execution': 'সম্পাদন',
+                'Step 4': 'পদক্ষেপ 4',
+                'Quality Check': 'গুণমান পরীক্ষা',
+                'Step 5': 'পদক্ষেপ 5',
+                'Completion': 'সমাপ্তি',
+                'View our recent facilities maintenance work': 'আমাদের সম্প্রতি সুবিধা রক্ষণাবেক্ষণ কাজ দেখুন',
+                'All': 'সব',
+                'Commercial': 'বাণিজ্যিক',
+                'Residential': 'আবাসিক',
+                'Industrial': 'শিল্প',
+                'Office Complex Maintenance': 'অফিস কমপ্লেক্স রক্ষণাবেক্ষণ',
+                'Residential Building Care': 'আবাসিক বিল্ডিং যত্ন',
+                'Industrial Facility Maintenance': 'শিল্প সুবিধা রক্ষণাবেক্ষণ',
+                'Shopping Center Services': 'শপিং সেন্টার পরিষেবা',
+                'Apartment Complex Restoration': 'অ্যাপার্টমেন্ট কমপ্লেক্স পুনরুদ্ধার',
+                'Warehouse Maintenance': 'গুদাম রক্ষণাবেক্ষণ',
+                'What our clients say about our services': 'আমাদের ক্লায়েন্টরা আমাদের পরিষেবা সম্পর্কে কী বলে',
+                'Find answers to common questions about our services': 'আমাদের পরিষেবা সম্পর্কে সাধারণ প্রশ্নের উত্তর খুঁজুন',
+                'What services do you offer?': 'আপনি কি পরিষেবা প্রদান করেন?',
+                'Do you offer 24/7 emergency services?': 'আপনি কি 24/7 জরুরি পরিষেবা প্রদান করেন?',
+                'How quickly can you respond to maintenance requests?': 'আপনি রক্ষণাবেক্ষণ অনুরোধে কত দ্রুত সাড়া দিতে পারেন?',
+                'Are your technicians certified and insured?': 'আপনার প্রযুক্তিবিদরা প্রত্যয়িত এবং বীমাকৃত?',
+                'Can you work within our budget constraints?': 'আপনি আমাদের বাজেট সীমাবদ্ধতার মধ্যে কাজ করতে পারেন?',
+                'Do you provide maintenance contracts?': 'আপনি কি রক্ষণাবেক্ষণ চুক্তি প্রদান করেন?',
+                'Get in touch with our team today': 'আজই আমাদের দলের সাথে যোগাযোগ করুন',
+                'Contact Information': 'যোগাযোগ তথ্য',
+                'Phone': 'ফোন',
+                'Email': 'ইমেল',
+                'Office Address': 'অফিস ঠিকানা',
+                'Working Hours': 'কাজের সময়',
+                'Full Name': 'পূর্ণ নাম',
+                'Company': 'কোম্পানি',
+                'Service Required': 'প্রয়োজনীয় পরিষেবা',
+                'Message': 'বার্তা',
+                'Send Message': 'বার্তা পাঠান',
+                'Quick Links': 'দ্রুত সংযোগ',
+                'Follow Us': 'আমাদের অনুসরণ করুন',
+            },
+            zh: {
+                'ProFacilities': 'ProFacilities',
+                'Home': '首页',
+                'About Us': '关于我们',
+                'Services': '服务',
+                'Why Choose Us': '为什么选择我们',
+                'Projects': '项目',
+                'Testimonials': '推荐',
+                'FAQ': '常见问题',
+                'Contact': '联系',
+                'Professional Building Facilities Maintenance Services': '专业建筑设施维护服务',
+                'Reliable • Efficient • Professional Facility Management Solutions': '可靠•高效•专业设施管理解决方案',
+                'Request a Quote': '请求报价',
+                'Our Services': '我们的服务',
+                'Our Mission': '我们的使命',
+                'Our Vision': '我们的愿景',
+                'Integrity': '诚实',
+                'Honest and transparent in all dealings': '在所有交易中诚实透明',
+                'Excellence': '优秀',
+                'Highest standards in every project': '每个项目的最高标准',
+                'Innovation': '创新',
+                'Cutting-edge solutions and technology': '尖端解决方案和技术',
+                'Reliability': '可靠性',
+                'Consistent and dependable service': '一致和可靠的服务',
+                'Projects Completed': '完成的项目',
+                'Years Experience': '年的经验',
+                'Satisfied Clients': '满意的客户',
+                'Expert Staff': '专家团队',
+                'Comprehensive facility maintenance solutions tailored to your needs': '根据您的需要量身定制的全面设施维护解决方案',
+                'Building Maintenance': '建筑维护',
+                'Regular maintenance and repairs to keep your building in optimal condition': '定期维护和修复以保持您的建筑处于最佳状态',
+                'Learn More': '了解更多',
+                'Electrical Maintenance': '电气维护',
+                'Expert electrical services and safety inspections': '专业电气服务和安全检查',
+                'Mechanical Maintenance': '机械维护',
+                'Professional mechanical system repairs and upgrades': '专业机械系统维修和升级',
+                'HVAC Services': '暖通空调服务',
+                'Climate control installation, repair, and maintenance': '气候控制的安装、维修和保养',
+                'Plumbing': '管道',
+                'Complete plumbing solutions and water system management': '完整的管道解决方案和水系统管理',
+                'Cleaning Services': '清洁服务',
+                'Professional cleaning and janitorial services': '专业清洁和保洁服务',
+                'Painting': '绘画',
+                'Interior and exterior painting services': '室内和室外绘画服务',
+                'Civil Repairs': '民用维修',
+                'Structural repairs and civil construction work': '结构维修和民用建筑工程',
+                'Roof Maintenance': '屋顶维护',
+                'Roof inspection, repair, and waterproofing services': '屋顶检查、维修和防水服务',
+                'What sets us apart from the competition': '我们与竞争对手的区别',
+                '24/7 Support': '24/7 支持',
+                'Round-the-clock customer support for emergency maintenance': '应急维护的全天候客户支持',
+                'Certified Professionals': '认证专业人员',
+                'Highly trained and certified technicians': '训练有素且获得认证的技术人员',
+                'Fast Response': '快速响应',
+                'Quick response times to minimize downtime': '快速响应时间以最小化停机时间',
+                'Affordable Pricing': '价格实惠',
+                'Competitive rates without compromising quality': '具有竞争力的价格而不损害质量',
+                'Quality Assurance': '质量保证',
+                'Rigorous quality checks on all completed work': '对所有已完成的工作进行严格的质量检查',
+                'Safety First': '安全第一',
+                'Strict adherence to safety protocols and standards': '严格遵守安全协议和标准',
+                'Simple, transparent, and efficient service delivery': '简单、透明和高效的服务交付',
+                'Step 1': '步骤 1',
+                'Inspection': '检查',
+                'Step 2': '步骤 2',
+                'Quotation': '报价',
+                'Step 3': '步骤 3',
+                'Execution': '执行',
+                'Step 4': '步骤 4',
+                'Quality Check': '质量检查',
+                'Step 5': '步骤 5',
+                'Completion': '完成',
+                'View our recent facilities maintenance work': '查看我们最近的设施维护工作',
+                'All': '全部',
+                'Commercial': '商业',
+                'Residential': '住宅',
+                'Industrial': '工业',
+                'Office Complex Maintenance': '办公建筑群维护',
+                'Residential Building Care': '住宅建筑护理',
+                'Industrial Facility Maintenance': '工业设施维护',
+                'Shopping Center Services': '购物中心服务',
+                'Apartment Complex Restoration': '公寓建筑群修复',
+                'Warehouse Maintenance': '仓库维护',
+                'What our clients say about our services': '我们的客户对我们的服务怎么说',
+                'Find answers to common questions about our services': '查找有关我们服务的常见问题的答案',
+                'What services do you offer?': '您提供哪些服务？',
+                'Do you offer 24/7 emergency services?': '您提供 24/7 应急服务吗？',
+                'How quickly can you respond to maintenance requests?': '您对维护请求的响应速度有多快？',
+                'Are your technicians certified and insured?': '您的技术人员是否经过认证和投保？',
+                'Can you work within our budget constraints?': '您能在我们的预算限制范围内工作吗？',
+                'Do you provide maintenance contracts?': '您是否提供维护合同？',
+                'Get in touch with our team today': '今天就与我们的团队取得联系',
+                'Contact Information': '联系信息',
+                'Phone': '电话',
+                'Email': '电子邮件',
+                'Office Address': '办公地址',
+                'Working Hours': '工作时间',
+                'Full Name': '全名',
+                'Company': '公司',
+                'Service Required': '所需服务',
+                'Message': '信息',
+                'Send Message': '发送信息',
+                'Quick Links': '快速链接',
+                'Follow Us': '关注我们',
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        // ========================================
+        // LANGUAGE SWITCHING FUNCTIONALITY
+        // ========================================
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-text]').forEach(element => {
+                const key = element.getAttribute('data-text');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update FAQ answers (special handling)
+            updateFAQAnswers();
+
+            // Update testimonial quotes (special handling)
+            updateTestimonials();
+
+            // Update form labels and placeholders
+            updateFormElements();
+
+            // Update FAQ question text for special questions
+            updateFAQQuestions();
+
+            // Update current language display
+            const langMap = { en: 'EN', ms: 'MS', ta: 'TA', zh: 'ZH' };
+            document.getElementById('currentLang').textContent = langMap[lang];
+
+            // Update active button
+            document.querySelectorAll('.language-option').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('active');
+        }
+
+        function updateFAQAnswers() {
+            const faqAnswers = {
+                en: [
+                    'We offer comprehensive building facilities maintenance services including electrical, mechanical, HVAC, plumbing, cleaning, painting, civil repairs, roof maintenance, and emergency maintenance. All services are delivered by certified professionals.',
+                    'Yes, we provide round-the-clock emergency maintenance services. Our dedicated team is available 24/7 to handle any urgent facility maintenance needs to minimize downtime.',
+                    'Our average response time is within 2 hours for emergency requests and 24 hours for scheduled maintenance. We prioritize rapid response to minimize disruption to your operations.',
+                    'Yes, all our technicians are fully certified, licensed, and insured. We maintain strict quality standards and safety protocols to ensure the highest level of service.',
+                    'Absolutely. We offer flexible pricing options and can customize service packages to fit your budget. We\'ll provide detailed quotations with no hidden charges.',
+                    'Yes, we offer comprehensive preventive maintenance contracts tailored to your facility\'s specific needs. These contracts help extend equipment life and reduce overall maintenance costs.'
+                ],
+                ms: [
+                    'Kami menawarkan perkhidmatan penyelenggaraan kemudahan bangunan komprehensif termasuk elektrik, mekanikal, HVAC, paip, pembersihan, pengecatan, pembaikan awam, penyelenggaraan bumbung, dan penyelenggaraan kecemasan. Semua perkhidmatan disediakan oleh profesional bersijil.',
+                    'Ya, kami menyediakan perkhidmatan penyelenggaraan kecemasan sepanjang masa. Pasukan berdedikasi kami tersedia 24/7 untuk menangani sebarang keperluan penyelenggaraan kemudahan mendesak untuk meminimalkan masa henti.',
+                    'Masa respons purata kami adalah dalam 2 jam untuk permintaan kecemasan dan 24 jam untuk penyelenggaraan yang dijadualkan. Kami mengutamakan respons pantas untuk meminimalkan gangguan kepada operasi anda.',
+                    'Ya, semua teknisi kami adalah bersijil sepenuhnya, berlesen, dan diinsuranskan. Kami mengekalkan piawaian kualiti yang ketat dan protokol keselamatan untuk memastikan tahap perkhidmatan tertinggi.',
+                    'Sudah tentu. Kami menawarkan pilihan penetapan harga yang fleksibel dan dapat menyesuaikan pakej perkhidmatan untuk sesuai dengan bajet anda. Kami akan memberikan sebutan harga terperinci tanpa caj tersembunyi.',
+                    'Ya, kami menawarkan kontrak penyelenggaraan pencegahan komprehensif yang disesuaikan dengan keperluan khusus kemudahan anda. Kontrak ini membantu memanjangkan hayat peralatan dan mengurangkan kos penyelenggaraan keseluruhan.'
+                ],
+                ta: [
+                    'நாங்கள் மின்சாரம், যন்ত্রவியல், HVAC, நீர்வழங்கல், சுத்தம், வர்ணம், சிவில் பழுதுபார்ப்பு, ছাদ பராமரிப்பு மற்றும் அவசர பராமரிப்பு உள்ளிட்ட விரிவான கட்டிட வசதி பராமரிப்பு சேவைகளை வழங்குகிறோம். அனைத்து சேவைகளும் சான்றளிக்கப்பட்ட தொழிலாளிகளால் வழங்கப்படுகின்றன.',
+                    'ஆம், நாங்கள் 24/7 அவசர பராமரிப்பு சேவைகளை வழங்குகிறோம். எங்கள் ஆர்ப்பணிக்கப்பட்ட குழு எந்தவொரு அவசர வசதி பராமரிப்பு தேவைகளையும் சামாளிக்க 24/7 கிடைக்கும்.',
+                    'எங்கள் சাধாரண பிரতিক্রিया நேரம் அவசர கோரிக்கைகளுக்கு 2 மணிநேரத்திற்குள் மற்றும் திட்டமிடப்பட்ட பராமரிப்புக்கு 24 மணிநேரம். வேகமான பிரதிக্রியைக் கொடுப்பதன் மூலம் உங்கள் செயல்பாட்டில் ஏற்படும் சீர்குலைவு குறைக்க முயல்கிறோம்.',
+                    'ஆம், எங்கள் அனைத்து தொழிலாளிகளும் முழுமையாக சான்றளிக்கப்பட்ட, உரிமம் பெற்ற மற்றும் காப்பீடு செய்யப்பட்டுள்ளனர். மிக உচ்ச அளவிலான சேவை உறுதிசெய்ய நாங்கள் கடுமையான தரம் மற்றும் பாதுகாப்பு நெறிமுறைகளை பராமரிக்கிறோம்.',
+                    'நிச்சயமாக. நாங்கள் நমக்கமான விலை நির்ধারণ விருப்பங்கள் மற்றும் உங்கள் பட்ജெட்டுக்கு பொருந்தக்கூடிய சেவை பொதிகளை தனிப்பயனாக்க முடியும். விস்தாரமான மேற்கோள்களை வழங்குவோம் மறைமுக கட்டணம் இல்லாமல்.',
+                    'ஆம், நாங்கள் உங்கள் வசதির குறிப்பிட்ட தேவைகளுக்கு ஏற்றாற்போல வடிவமைக்கப்பட்ட விரிவான வேষணீயப் பராமரிப்பு ஒப்பந்தங்களை வழங்குகிறோம். இந்த ஒப்பந்தங்கள் உபரணஉயர் வாழ்கையை நீட்ட மற்றும் ஒட்டுமொத்த பராமரிப்பு செலவுகளை குறைக்க உதவுகின்றன.'
+                ],
+                zh: [
+                    '我们提供包括电气、机械、暖通空调、管道、清洁、绘画、民用维修、屋顶维护和应急维护在内的综合建筑设施维护服务。所有服务由认证专业人员提供。',
+                    '是的，我们提供全天候应急维护服务。我们的敬业团队全天候可用，以处理任何紧急设施维护需求，以最小化停机时间。',
+                    '我们对于应急请求的平均响应时间为 2 小时以内，对于预定维护为 24 小时。我们优先进行快速响应，以最大限度地减少对您的运营的干扰。',
+                    '是的，我们的所有技术人员都是经过全面认证、持证和投保的。我们维持严格的质量标准和安全协议，以确保最高级别的服务。',
+                    '绝对可以。我们提供灵活的定价选项，并可以自定义服务包以适应您的预算。我们将提供详细的报价，没有隐藏费用。',
+                    '是的，我们提供根据您的设施特定需求定制的综合预防性维护合同。这些合同有助于延长设备寿命并降低总体维护成本。'
+                ]
+            };
+
+            document.querySelectorAll('.faq-answer').forEach((answer, index) => {
+                const p = answer.querySelector('p');
+                if (p && faqAnswers[currentLanguage] && faqAnswers[currentLanguage][index]) {
+                    p.textContent = faqAnswers[currentLanguage][index];
+                }
+            });
+        }
+
+        function updateFAQQuestions() {
+            const questions = {
+                en: ['What services do you offer?', 'Do you offer 24/7 emergency services?', 'How quickly can you respond to maintenance requests?', 'Are your technicians certified and insured?', 'Can you work within our budget constraints?', 'Do you provide maintenance contracts?'],
+                ms: ['Apakah perkhidmatan yang anda tawarkan?', 'Adakah anda menawarkan perkhidmatan kecemasan 24/7?', 'Seberapa cepat anda dapat bertindak balas terhadap permintaan penyelenggaraan?', 'Adakah teknisi anda bersijil dan diinsuranskan?', 'Bolehkah anda bekerja dalam kekangan bajet kami?', 'Adakah anda menyediakan kontrak penyelenggaraan?'],
+                ta: ['நீங்கள் என்ன சேவைகளை வழங்குகிறீர்கள்?', 'நீங்கள் 24/7 அவசர பரிষেவைகளை வழங்குகிறீர்களா?', 'நீங்கள் பாதுகாப்பு கோரிக்கைகளுக்கு எவ்வளவு விரைவாக பதிலளிக்க முடியும்?', 'உங்கள் தொழிலாளிகள் சான்றளிக்கப்பட்டுள்ளனர் மற்றும் காப்பீடு செய்யப்பட்டுள்ளனரா?', 'நீங்கள் எங்கள் பட்ஜெட் கட்டுப்பாட்டுக்குள் வேலை செய்ய முடியுமா?', 'நீங்கள் பாதுகாப்பு ஒப்பந்தங்களை வழங்குகிறீர்களா?'],
+                zh: ['您提供哪些服务？', '您提供 24/7 应急服务吗？', '您对维护请求的响应速度有多快？', '您的技术人员是否经过认证和投保？', '您能在我们的预算限制范围内工作吗？', '您是否提供维护合同？']
+            };
+
+            document.querySelectorAll('.faq-question').forEach((question, index) => {
+                const span = question.querySelector('span:first-child');
+                if (span && questions[currentLanguage] && questions[currentLanguage][index]) {
+                    span.textContent = questions[currentLanguage][index];
+                }
+            });
+        }
+
+        function updateTestimonials() {
+            const testimonials = {
+                en: [
+                    '"ProFacilities transformed our maintenance operations. Their team is professional, efficient, and always responsive to our needs."',
+                    '"Exceptional service! The team handled all our facility maintenance with precision and professionalism. Highly recommended."',
+                    '"Best facilities management partner we\'ve had. Their attention to detail and commitment to excellence is unmatched."'
+                ],
+                ms: [
+                    '"ProFacilities mengubah operasi penyelenggaraan kami. Pasukan mereka adalah profesional, cekap, dan selalu responsif terhadap keperluan kami."',
+                    '"Perkhidmatan yang luar biasa! Pasukan menangani semua penyelenggaraan kemudahan kami dengan ketepatan dan profesionalisme. Sangat disyorkan."',
+                    '"Rakan pengurusan kemudahan terbaik yang kami miliki. Perhatian mereka terhadap perincian dan komitmen kepada keunggulan tidak tertandingi."'
+                ],
+                ta: [
+                    '"ProFacilities எங்கள் பராமரிப்பு செயல்பாடுகளை மாற்றினர். அவர்களின் குழு தொழிலாய, திறமையான மற்றும் எப்போதும் எங்கள் தேவைகளுக்கு பதிலளிக்கிறது."',
+                    '"ஆச்சரியமான சেவை! குழு எங்கள் அனைத்து வசதி பராமரிப்பை கோபுரம் மற்றும் தொழிலாய உடன் கையாண்டது. மிகவும் மறுக்கப்பட்டிருந்தது."',
+                    '"சிறந்த வசதி ব்যবস்થாபন கூட்டாளி நாம் எங்கள். அவர்களின் விஷயங்களுக்கு கவனம் மற்றும் சிறந்ததுக்கான உறுதிப்பாடு பொருந்தாதவர்."'
+                ],
+                zh: [
+                    '"ProFacilities改变了我们的维护运营。他们的团队专业、高效，始终响应我们的需求。"',
+                    '"卓越的服务！团队以精确和专业的态度处理了我们所有的设施维护。强烈推荐。"',
+                    '"我们拥有的最佳设施管理合作伙伴。他们对细节的关注和对卓越的承诺无可比拟。"'
+                ]
+            };
+
+            document.querySelectorAll('.testimonial-card p:not(.author-info p)').forEach((quote, index) => {
+                if (testimonials[currentLanguage] && testimonials[currentLanguage][index]) {
+                    quote.textContent = testimonials[currentLanguage][index];
+                }
+            });
+        }
+
+        function updateFormElements() {
+            const formLabels = {
+                en: {
+                    'name': 'Full Name',
+                    'company': 'Company',
+                    'phone': 'Phone',
+                    'email': 'Email',
+                    'service': 'Service Required',
+                    'message': 'Message'
+                },
+                ms: {
+                    'name': 'Nama Penuh',
+                    'company': 'Syarikat',
+                    'phone': 'Telefon',
+                    'email': 'E-mel',
+                    'service': 'Perkhidmatan Diperlukan',
+                    'message': 'Pesanan'
+                },
+                ta: {
+                    'name': 'பூர்ண பெயர்',
+                    'company': 'நிறுவனம்',
+                    'phone': 'தொலைபேசி',
+                    'email': 'மின்னஞ்சல்',
+                    'service': 'தேவைப்பட்ட சேவை',
+                    'message': 'செய்தி'
+                },
+                zh: {
+                    'name': '全名',
+                    'company': '公司',
+                    'phone': '电话',
+                    'email': '电子邮件',
+                    'service': '所需服务',
+                    'message': '信息'
+                }
+            };
+
+            document.querySelectorAll('label').forEach(label => {
+                const forAttr = label.getAttribute('for');
+                if (forAttr && formLabels[currentLanguage][forAttr]) {
+                    label.textContent = formLabels[currentLanguage][forAttr];
+                }
+            });
+        }
+
+        // ========================================
+        // LANGUAGE SELECTOR EVENT LISTENERS
+        // ========================================
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+
+        languageToggle.addEventListener('click', () => {
+            languageDropdown.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-selector')) {
+                languageDropdown.classList.remove('active');
+            }
+        });
+
+        // ========================================
+        // INITIALIZATION & UTILITIES
+        // ========================================
+
+        // Close preloader
+        window.addEventListener('load', () => {
+            document.querySelector('.preloader').style.display = 'none';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('active');
+                    document.querySelector('.hamburger').classList.remove('active');
+                }
+            });
+        });
+
+        // ========================================
+        // HAMBURGER MENU
+        // ========================================
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // ========================================
+        // SCROLL SPY
+        // ========================================
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ========================================
+        // BACK TO TOP BUTTON
+        // ========================================
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========================================
+        // ANIMATED COUNTERS
+        // ========================================
+        const stats = document.querySelectorAll('.stat-number');
+
+        const animateCounter = (element, target, duration = 2000) => {
+            let current = 0;
+            const increment = target / (duration / 16);
+
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCount();
+        };
+
+        // Intersection Observer for counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    entry.target.dataset.animated = 'true';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        stats.forEach(stat => counterObserver.observe(stat));
+
+        // ========================================
+        // TYPING EFFECT
+        // ========================================
+        const typingElement = document.querySelector('.typing-effect');
+        const texts = ['Maintenance Services', 'Solutions', 'Support'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        const typeText = () => {
+            const currentText = texts[textIndex];
+            
+            if (!isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                
+                if (charIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeText, 2000);
+                    return;
+                }
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                }
+            }
+            
+            setTimeout(typeText, isDeleting ? 50 : 100);
+        };
+
+        typeText();
+
+        // ========================================
+        // SCROLL ANIMATIONS
+        // ========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeUpIn 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .why-card, .testimonial-card, .faq-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========================================
+        // FAQ ACCORDION
+        // ========================================
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                item.classList.toggle('active');
+            });
+        });
+
+        // ========================================
+        // PROJECT FILTER
+        // ========================================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeUpIn 0.4s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ========================================
+        // CONTACT FORM
+        // ========================================
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !phone || !service || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Simulate form submission
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+
+            setTimeout(() => {
+                alert('Thank you for your message! We will contact you shortly.');
+                contactForm.reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 1500);
+        });
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // ========================================
+        // RIPPLE EFFECT ON BUTTONS
+        // ========================================
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: rippleAnimation 0.6s ease-out;
+                pointer-events: none;
+            }
+            @keyframes rippleAnimation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
